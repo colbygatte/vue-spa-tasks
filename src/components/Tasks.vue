@@ -1,8 +1,15 @@
 <template>
     <div>
         <div v-for="task in tasks">
-            <task-list-item :task="task" class="task" :class="task.completed ? '' : 'task-completed'"></task-list-item>
+            <task-list-item
+                    :task="task"
+                    class="task"
+                    :class="task.completed ? '' : 'task-completed'"
+                    @click="wantsToEditTask(task)">
+            </task-list-item>
         </div>
+
+        <task-list-item-editor-popup v-if="editTask" :task="editTask" @close="editTask = false"></task-list-item-editor-popup>
     </div>
 </template>
 
@@ -10,7 +17,8 @@
     export default {
         data: function () {
             return {
-                tasks: []
+                tasks: [],
+                editTask: false
             }
         },
 
@@ -25,6 +33,9 @@
         },
 
         methods: {
+            wantsToEditTask: function (task) {
+                this.editTask = task;
+            }
         }
     };
 </script>

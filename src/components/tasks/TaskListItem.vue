@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a class="is-3" @click="editTask">{{ task.task }}</a>
+        <a class="is-3" @click="emitClick()">{{ task.task }}</a>
     </div>
 </template>
 
@@ -9,8 +9,8 @@
         props: ['task'],
 
         methods: {
-            editTask: function () {
-                alert('Wanna edit?');
+            emitClick: function() {
+                this.$emit('click');
             }
         }
     }
