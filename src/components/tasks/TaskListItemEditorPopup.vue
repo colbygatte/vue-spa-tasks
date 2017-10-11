@@ -31,7 +31,13 @@
 
         methods: {
             save: function() {
-
+                axios.post(window.apiBase + '/v1/tasks/update', this.task)
+                    .then(response => {
+                        this.$emit('close');
+                    })
+                    .catch(error => {
+                        alert('Error :(');
+                    })
             },
 
             close: function () {

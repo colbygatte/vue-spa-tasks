@@ -3,8 +3,6 @@
         <div v-for="task in tasks">
             <task-list-item
                     :task="task"
-                    class="task"
-                    :class="task.completed ? '' : 'task-completed'"
                     @click="wantsToEditTask(task)">
             </task-list-item>
         </div>
@@ -39,13 +37,3 @@
         }
     };
 </script>
-
-<style scoped>
-    .task-completed {
-        text-decoration: line-through;
-    }
-
-    .task {
-        font-size: 3em;
-    }
-</style>
