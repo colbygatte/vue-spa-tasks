@@ -1,7 +1,7 @@
 <template>
     <div class="task" :class="task.completed ? 'task-completed' : ''">
-        <input type="checkbox" v-model="task.completed" @click="toggleTask">
-        <a class="is-3" @click="emitClick()">{{ task.task }}</a>
+        <input class="the-checkbox" type="checkbox" v-model="task.completed" @click="toggleTask">
+        <a class="" @click="emitClick()">{{ task.task }}</a>
     </div>
 </template>
 
@@ -10,11 +10,11 @@
         props: ['task'],
 
         methods: {
-            emitClick: function() {
+            emitClick: function () {
                 this.$emit('click');
             },
 
-            toggleTask: function() {
+            toggleTask: function () {
                 axios.post(window.apiBase + '/v1/tasks/update', this.task)
                     .then(response => console.log('Updated'))
                     .catch(error => {
@@ -23,7 +23,7 @@
                     });
             }
         }
-    }
+    };
 </script>
 
 <style scoped>
@@ -32,6 +32,6 @@
     }
 
     .task {
-        font-size: 3em;
+        font-size: 2em;
     }
 </style>

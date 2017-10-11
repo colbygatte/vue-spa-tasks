@@ -15,7 +15,11 @@
                             </div>
 
                             <div class="control" @click="close">
-                                <a class="button is-danger">Cancel</a>
+                                <a class="button is-warning">Cancel</a>
+                            </div>
+
+                            <div class="control" @click="deleteTask">
+                                <a class="button is-danger">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -42,6 +46,18 @@
 
             close: function () {
                 this.$emit('close');
+            },
+
+            deleteTask: function () {
+                axios.post(window.apiBase + '/v1/tasks/delete', this.task)
+                    .then(response => {
+                        console.log(response.data.message);
+
+                        this.$emit('taskDeleted')
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
         }
     };
